@@ -1,11 +1,12 @@
 import React from 'react';
 
 import './App.css';
+import Header from "./component/header/Header";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="font-bold text-blue-500"> 1 </h1>
+      <Header/>
   </div>
   );
 }
