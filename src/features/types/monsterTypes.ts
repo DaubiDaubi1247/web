@@ -1,11 +1,12 @@
-export interface MonsterClassItem {
+export interface MonsterItem {
     name : string,
     imgName : string,
-    source : string
+    source : string,
+    id : number,
 }
 
-export type MonsterClassArray = Array<MonsterClassItem>
+export type MonsterArray = Array<MonsterItem>
 
 export interface MonsterClassState {
-    monsterClassArr : MonsterClassArray | null
+    monsterClassArr : MonsterArray | null
 }

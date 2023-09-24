@@ -2,7 +2,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import {UserInfo} from "../features/types/authTypes";
 import {ApiUrls, BASE_URL} from "../api/apiConfig";
-import {MonsterClassArray} from "../features/types/monsterTypes";
+import {MonsterArray} from "../features/types/monsterTypes";
 
 // Define a service using a base URL and expected endpoints
 export const witcherApi = createApi({
@@ -16,7 +16,7 @@ export const witcherApi = createApi({
                 body : userInfo,
             }),
         }),
-        getAllMonsterClass: builder.query<MonsterClassArray, void>({
+        getAllMonsterClass: builder.query<MonsterArray, void>({
             query: () => ApiUrls.ALL_MONSTER_CLASS,
         }),
     }),
