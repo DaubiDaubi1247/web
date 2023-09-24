@@ -6,14 +6,14 @@ import Footer from "./component/footer/Footer";
 import {Route, Routes} from "react-router-dom";
 import {HeaderNavPath} from "./common/navPath/header/HeaderNavPath";
 import MonsterCardContainer from "./common/monsterCard/MonsterCardContainer";
+import MonsterClassContainer from "./component/monsterClass/MonsterClassContainer";
 
 function App() {
   return (
     <div className="App wrapper ">
         <Header/>
         <Routes>
-            <Route path={HeaderNavPath.HOME} element={<MonsterCardContainer />} />
-
+            <Route path={HeaderNavPath.HOME} element={<MonsterClassContainer />} />
         </Routes>
         <Footer/>
     </div>
