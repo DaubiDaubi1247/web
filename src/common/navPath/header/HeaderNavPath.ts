@@ -1,3 +1,3 @@
 export const HeaderNavPath =  {
-    HOME : "/home",
+    HOME : "/",
 }

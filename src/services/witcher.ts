@@ -1,12 +1,13 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import {UserInfo} from "../features/types/authTypes";
-import {ApiUrls} from "../api/apiConfig";
+import {ApiUrls, BASE_URL} from "../api/apiConfig";
+import {MonsterClassArray} from "../features/types/monsterTypes";
 
 // Define a service using a base URL and expected endpoints
 export const witcherApi = createApi({
     reducerPath: 'witcherApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://pokeapi.co/api/v2/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
     endpoints: (builder) => ({
         authUser: builder.mutation<Boolean, UserInfo>({
             query: (userInfo) => ({
@@ -15,9 +16,12 @@ export const witcherApi = createApi({
                 body : userInfo,
             }),
         }),
+        getAllMonsterClass: builder.query<MonsterClassArray, void>({
+            query: () => ApiUrls.ALL_MONSTER_CLASS,
+        }),
     }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useAuthUserMutation } = witcherApi
+export const { useAuthUserMutation, useGetAllMonsterClassQuery } = witcherApi
