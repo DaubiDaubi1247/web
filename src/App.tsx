@@ -7,6 +7,7 @@ import {Route, Routes} from "react-router-dom";
 import {HeaderNavPath} from "./common/navPath/header/HeaderNavPath";
 import MonsterCardContainer from "./common/monsterCard/MonsterCardContainer";
 import MonsterClassContainer from "./component/monsterClass/MonsterClassContainer";
+import MonsterByClassInfoContainer from "./component/MonsterByClassInfo/MonsterByClassInfoContainer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Header/>
         <Routes>
             <Route path={HeaderNavPath.HOME} element={<MonsterClassContainer />} />
+            <Route path={HeaderNavPath.MONSTERS_BY_CLASS + ":id"} element={<MonsterByClassInfoContainer/>}/>
         </Routes>
         <Footer/>
     </div>

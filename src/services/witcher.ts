@@ -19,9 +19,12 @@ export const witcherApi = createApi({
         getAllMonsterClass: builder.query<MonsterArray, void>({
             query: () => ApiUrls.ALL_MONSTER_CLASS,
         }),
+        getAllMonsterByClass: builder.query<MonsterArray, Number>({
+            query: (classId) => ApiUrls.ALL_MONSTER_BY_CLASS + classId,
+        }),
     }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useAuthUserMutation, useGetAllMonsterClassQuery } = witcherApi
+export const { useAuthUserMutation, useGetAllMonsterClassQuery, useGetAllMonsterByClassQuery } = witcherApi

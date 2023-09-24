@@ -1,4 +1,4 @@
 export const HeaderNavPath =  {
     HOME : "/",
-    MONSTERS_BY_CLASS : "/monsters/"
+    MONSTERS_BY_CLASS : "/monsters/",
 }
