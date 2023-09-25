@@ -5,13 +5,12 @@ import monsterSlice from "../features/monster/monsterSlice";
 
 export const store = configureStore({
     reducer: {
-        // Add the generated reducer as a specific top-level slice
+
         [witcherApi.reducerPath]: witcherApi.reducer,
 
         monsterClass : monsterSlice
     },
-    // Adding the api middleware enables caching, invalidation, polling,
-    // and other useful features of `rtk-query`.
+
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware().concat(witcherApi.middleware),
 })

@@ -1,6 +1,6 @@
-export interface UserInfo {
-    login : string,
-    password : string,
+export interface InputsFields {
+    monsterClassName: string,
+    monsterClassImg: FormData,
 }
 
 export interface AuthTypes {

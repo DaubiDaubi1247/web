@@ -1,7 +1,7 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {UserInfo} from "../features/types/authTypes";
-import {ApiUrls, BASE_URL, MONSTER_URL} from "../api/apiConfig";
+import {InputsFields} from "../features/types/authTypes";
+import {ApiUrls, BASE_URL, MONSTER_CLASS_URL, MONSTER_URL} from "../api/apiConfig";
 import {MonsterArray, MonsterInfoById} from "../features/types/monsterTypes";
 
 // Define a service using a base URL and expected endpoints
@@ -9,11 +9,11 @@ export const witcherApi = createApi({
     reducerPath: 'witcherApi',
     baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
     endpoints: (builder) => ({
-        authUser: builder.mutation<Boolean, UserInfo>({
-            query: (userInfo) => ({
-                url: ApiUrls.AUTH,
+        uploadMonsterClass: builder.mutation<void, InputsFields>({
+            query: (monsterClassInfo) => ({
+                url: MONSTER_CLASS_URL + `?name=${monsterClassInfo.monsterClassName}`,
                 method: 'POST',
-                body : userInfo,
+                body : monsterClassInfo.monsterClassImg,
             }),
         }),
         getAllMonsterClass: builder.query<MonsterArray, void>({
@@ -30,5 +30,5 @@ export const witcherApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useAuthUserMutation, useGetAllMonsterClassQuery, useGetAllMonsterByClassQuery
+export const { useUploadMonsterClassMutation, useGetAllMonsterClassQuery, useGetAllMonsterByClassQuery
 , useGetMonsterInfoByIdQuery} = witcherApi
