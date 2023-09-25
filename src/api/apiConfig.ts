@@ -1,5 +1,5 @@
 export const BASE_URL = "http://localhost:8080/api/v1.0"
-const MONSTER_URL = "/monster"
+export const MONSTER_URL = "/monster"
 const MONSTER_CLASS_URL = MONSTER_URL + "/class"
 
 export const ApiUrls =  {

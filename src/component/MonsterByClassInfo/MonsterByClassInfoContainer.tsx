@@ -14,7 +14,7 @@ const MonsterByClassInfoContainer = () => {
         return <span>error</span>
     }
 
-    return <MonsterCardContainer monsterList={data} linkTo={HeaderNavPath.MONSTERS_BY_CLASS + id + "/"}/>
+    return <MonsterCardContainer monsterList={data} linkTo={HeaderNavPath.MONSTERS_BY_CLASS + id + "/monsterId/"}/>
 };
 
 export default MonsterByClassInfoContainer;

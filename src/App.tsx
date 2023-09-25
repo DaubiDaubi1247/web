@@ -8,6 +8,7 @@ import {HeaderNavPath} from "./common/navPath/header/HeaderNavPath";
 import MonsterCardContainer from "./common/monsterCard/MonsterCardContainer";
 import MonsterClassContainer from "./component/monsterClass/MonsterClassContainer";
 import MonsterByClassInfoContainer from "./component/MonsterByClassInfo/MonsterByClassInfoContainer";
+import MonsterInfo from "./component/monsterInfo/MonsterInfo";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
             <Route path={HeaderNavPath.HOME} element={<MonsterClassContainer />} />
             <Route path={HeaderNavPath.MONSTERS_BY_CLASS + ":id"} element={<MonsterByClassInfoContainer/>}/>
+            <Route path={HeaderNavPath.MONSTERS_BY_CLASS + ":id/monsterId/:id"} element={<MonsterInfo/>}/>
         </Routes>
         <Footer/>
     </div>
