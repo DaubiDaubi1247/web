@@ -16,14 +16,29 @@ code {
     monospace;
 }
 
+body {
+  min-height:100vh;
+}
+
+#root {
+  height: 100vh;
+}
+
 .wrapper {
   display: flex;
-  flex-direction: column;
   height: 100%;
+  flex-direction: column;
 }
 .content {
-  flex: 1 0 auto;
+  flex: 1 1 auto;
 }
-.footer {
-  flex: 0 0 auto;
+header,footer{
+  flex:0 0 auto;
+  /*для наглядности*/
+  height:50px;
+  background-color:green;
+  color:#fff;
+  text-align:center;
+  line-height:50px;
+
 }

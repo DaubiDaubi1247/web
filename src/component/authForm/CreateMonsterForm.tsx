@@ -17,7 +17,6 @@ const CreateMonsterForm = () => {
     const onSubmit: SubmitHandler<InputsFields> = data => {
         const formData = new FormData();
         formData.append("classImg", data.monsterClassImg[0])
-        debugger
 
         trigger({monsterClassName : data.monsterClassName, monsterClassImg : formData})
     }

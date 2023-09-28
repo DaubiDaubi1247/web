@@ -1,28 +1,17 @@
 import React from 'react';
-import {useGetMonsterInfoByIdQuery} from "../../services/witcher";
-import {useParams} from "react-router-dom";
 import {ApiUrls} from "../../api/apiConfig";
+import {MonsterInfoById} from "../../features/types/monsterTypes";
 
-const MonsterInfo = () => {
-
-    const {id} = useParams();
-
-    const {data} = useGetMonsterInfoByIdQuery(Number(id));
-
-    if (!data) {
-        return <span>error</span>
-    }
-
+const MonsterInfo : React.FC<MonsterInfoById> = (props) => {
     return (
         <>
-            <img src={ApiUrls.IMG + data.source + data.imgName} alt=""/>
-            <h1>{data.name}</h1>
-            <p>{data.quote}</p>
-            <p>{data.quoteAuthor}</p>
-            <p>{data.description}</p>
+            <img src={ApiUrls.IMG + props.source + props.imgName} alt=""/>
+            <h1>{props.name}</h1>
+            <p>{props.quote}</p>
+            <p>{props.quoteAuthor}</p>
+            <p>{props.description}</p>
         </>
     );
 };
-
 
 export default MonsterInfo;

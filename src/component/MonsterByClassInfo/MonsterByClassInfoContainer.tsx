@@ -2,7 +2,7 @@ import React from 'react';
 import {useParams} from "react-router-dom";
 import {useGetAllMonsterByClassQuery} from "../../services/witcher";
 import MonsterCardContainer from "../../common/monsterCard/MonsterCardContainer";
-import {HeaderNavPath} from "../../common/navPath/header/HeaderNavPath";
+import {NavPath} from "../../common/navPath/NavPath";
 
 
 const MonsterByClassInfoContainer = () => {
@@ -14,7 +14,7 @@ const MonsterByClassInfoContainer = () => {
         return <span>error</span>
     }
 
-    return <MonsterCardContainer monsterList={data} linkTo={HeaderNavPath.MONSTERS_BY_CLASS + id + "/monsterId/"}/>
+    return <MonsterCardContainer monsterList={data} linkTo={NavPath.MONSTERS_BY_CLASS + id + "/monsterId/"}/>
 };
 
 export default MonsterByClassInfoContainer;
