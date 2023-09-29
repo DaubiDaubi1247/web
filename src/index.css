@@ -9,6 +9,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 20px;
+  background-color: #000;
 }
 
 code {
@@ -18,10 +20,12 @@ code {
 
 body {
   min-height:100vh;
+
 }
 
 #root {
   height: 100vh;
+  color : #fff;
 }
 
 .wrapper {
@@ -35,9 +39,7 @@ body {
 header,footer{
   flex:0 0 auto;
   /*для наглядности*/
-  height:50px;
-  background-color:green;
-  color:#fff;
+  background: #000;
   text-align:center;
   line-height:50px;
 

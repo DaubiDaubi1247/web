@@ -6,7 +6,7 @@ import {NavPath} from "../../common/navPath/NavPath";
 
 const MonsterClassContainer = () => {
 
-    const { data } = useGetAllMonsterClassQuery();
+    const { data, refetch } = useGetAllMonsterClassQuery();
 
     if (!data) {
         return <span>error</span>

@@ -1,6 +1,4 @@
 import React, {useEffect} from 'react';
-import {useGetAllMonsterClassQuery} from "../../services/witcher";
-import {useAppDispatch} from "../../app/hooks";
 import MonsterCard from "./MonsterCard";
 import {MonsterArray} from "../../features/types/monsterTypes";
 
@@ -14,7 +12,7 @@ const MonsterCardContainer :React.FC<MonsterCardContainerProps> = ({monsterList,
     const monsterCardList = monsterList.map(monsterItem => <MonsterCard monsterInfo={monsterItem} linkTo={linkTo}/>)
 
     return (
-        <div className="flex">
+        <div className="flex justify-center flex-wrap">
             {monsterCardList}
         </div>
     );

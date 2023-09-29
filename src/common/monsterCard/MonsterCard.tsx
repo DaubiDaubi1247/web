@@ -16,8 +16,9 @@ const MonsterCard : React.FC<MonsterCardProps> = ({monsterInfo, linkTo}) => {
 
     return (
         <Link to={linkTo + monsterInfo.id}>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem' }} className="bg-gray-700 m-[20px] rounded-md p-2">
                 <Card.Img
+                    className="h-[350px]"
                     variant="top"
                     src={ApiUrls.IMG + monsterImgUrl}
                 />
