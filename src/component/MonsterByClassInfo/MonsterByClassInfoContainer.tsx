@@ -1,7 +1,7 @@
 import React from 'react';
 import {useParams} from "react-router-dom";
 import {useGetAllMonsterByClassQuery} from "../../services/witcher";
-import MonsterCardContainer from "../../common/monsterCard/MonsterCardContainer";
+import MonsterCardContainer from "../monsterCard/MonsterCardContainer";
 import {NavPath} from "../../common/navPath/NavPath";
 
 

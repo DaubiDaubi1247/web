@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useGetAllMonsterClassQuery} from "../../services/witcher";
-import MonsterCardContainer from "../../common/monsterCard/MonsterCardContainer";
+import MonsterCardContainer from "../monsterCard/MonsterCardContainer";
 import {NavPath} from "../../common/navPath/NavPath";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {setCreatedNewMonster} from "../../features/monster/monsterSlice";

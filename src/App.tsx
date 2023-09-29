@@ -8,7 +8,7 @@ import {NavPath} from "./common/navPath/NavPath";
 import MonsterClassContainer from "./component/monsterClass/MonsterClassContainer";
 import MonsterByClassInfoContainer from "./component/MonsterByClassInfo/MonsterByClassInfoContainer";
 import MonsterInfoContainer from "./component/monsterInfo/MonsterInfoContainer";
-import CreateMonsterForm from "./component/authForm/CreateMonsterForm";
+import CreateMonsterForm from "./component/createMonsterClassForm/CreateMonsterForm";
 
 function App() {
   return (

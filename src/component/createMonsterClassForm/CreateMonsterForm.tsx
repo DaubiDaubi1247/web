@@ -27,8 +27,6 @@ const CreateMonsterForm = () => {
         dispatch(setCreatedNewMonster(true));
     }
 
-    console.log(error)
-
     return (
             <Form onSubmit={handleSubmit(onSubmit)} className="bg-gray-700 py-3 mt-5 w-2/4 m-auto">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
