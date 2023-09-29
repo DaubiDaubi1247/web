@@ -4,6 +4,9 @@ import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
 import {Container} from "react-bootstrap";
 import {useUploadMonsterClassMutation} from "../../services/witcher";
+import {FormControl, FormLabel, Input, TextField} from "@mui/material";
+import {useAppDispatch} from "../../app/hooks";
+import {setCreatedNewMonster} from "../../features/monster/monsterSlice";
 
 
 type InputsFields = {
@@ -14,15 +17,19 @@ type InputsFields = {
 const CreateMonsterForm = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm<InputsFields>();
     const [ trigger, error] = useUploadMonsterClassMutation()
+
+    const dispatch = useAppDispatch();
     const onSubmit: SubmitHandler<InputsFields> = data => {
         const formData = new FormData();
         formData.append("classImg", data.monsterClassImg[0])
 
         trigger({monsterClassName : data.monsterClassName, monsterClassImg : formData})
+        dispatch(setCreatedNewMonster(true));
     }
 
+    console.log(error)
+
     return (
-        <Container>
             <Form onSubmit={handleSubmit(onSubmit)} className="bg-gray-700 py-3 mt-5 w-2/4 m-auto">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label className="block">Имя класса</Form.Label>
@@ -47,7 +54,6 @@ const CreateMonsterForm = () => {
                     Создать класс
                 </Button>
             </Form>
-        </Container>
 
     );
 };

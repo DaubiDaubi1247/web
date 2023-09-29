@@ -8,7 +8,8 @@ export interface MonsterItem {
 export type MonsterArray = Array<MonsterItem>
 
 export interface MonsterClassState {
-    monsterClassArr : MonsterArray | null
+    monsterClassArr : MonsterArray | null,
+    createdNewMonsterClass : boolean,
 }
 
 export interface MonsterInfoById extends MonsterItem{

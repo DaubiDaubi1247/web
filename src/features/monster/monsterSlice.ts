@@ -1,22 +1,24 @@
-import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
-import {AuthTypes} from "../types/authTypes";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
+
 import {MonsterClassState} from "../types/monsterTypes";
 
 
 const initialState: MonsterClassState = {
-    monsterClassArr : null
+    monsterClassArr : null,
+    createdNewMonsterClass : false,
 }
 
 export const monsterSlice = createSlice({
     name: 'monster',
     initialState,
     reducers: {
-
+        setCreatedNewMonster: (state, action: PayloadAction<boolean>) => {
+            state.createdNewMonsterClass = action.payload
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const {} = monsterSlice.actions
+export const {setCreatedNewMonster} = monsterSlice.actions
 
 export default monsterSlice.reducer
