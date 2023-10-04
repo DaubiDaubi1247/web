@@ -1,15 +1,14 @@
-import React, {useEffect} from 'react';
+import React  from 'react';
 import MonsterCard from "./MonsterCard";
-import {MonsterArray} from "../../features/types/monsterTypes";
+import {MonsterArray, WithDataFromServer} from "../../features/types/monsterTypes";
 
-interface MonsterCardContainerProps {
-    monsterList : MonsterArray,
+interface MonsterCardContainerProps extends WithDataFromServer{
     linkTo : string
 }
 
-const MonsterCardContainer :React.FC<MonsterCardContainerProps> = ({monsterList, linkTo}) => {
+const MonsterCardContainer :React.FC<MonsterCardContainerProps> = ({data, linkTo}) => {
 
-    const monsterCardList = monsterList.map(monsterItem => <MonsterCard monsterInfo={monsterItem} linkTo={linkTo}/>)
+    const monsterCardList = (data as MonsterArray).map(monsterItem => <MonsterCard monsterInfo={monsterItem} linkTo={linkTo}/>)
 
     return (
         <div className="flex justify-center flex-wrap">

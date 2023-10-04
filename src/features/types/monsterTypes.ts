@@ -17,3 +17,7 @@ export interface MonsterInfoById extends MonsterItem{
     quoteAuthor: string
     quote: string
 }
+
+export interface WithDataFromServer {
+    data? : MonsterArray | MonsterInfoById
+}

@@ -2,9 +2,7 @@ import React from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 import Form from "react-bootstrap/Form";
 import Button from 'react-bootstrap/Button';
-import {Container} from "react-bootstrap";
 import {useUploadMonsterClassMutation} from "../../services/witcher";
-import {FormControl, FormLabel, Input, TextField} from "@mui/material";
 import {useAppDispatch} from "../../app/hooks";
 import {setCreatedNewMonster} from "../../features/monster/monsterSlice";
 
@@ -15,8 +13,8 @@ type InputsFields = {
 };
 
 const CreateMonsterForm = () => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<InputsFields>();
-    const [ trigger, error] = useUploadMonsterClassMutation()
+    const { register, handleSubmit, formState: { errors } } = useForm<InputsFields>();
+    const [ trigger] = useUploadMonsterClassMutation()
 
     const dispatch = useAppDispatch();
     const onSubmit: SubmitHandler<InputsFields> = data => {

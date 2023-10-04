@@ -1,14 +1,16 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {useGetAllMonsterClassQuery} from "../../services/witcher";
 import MonsterCardContainer from "../monsterCard/MonsterCardContainer";
 import {NavPath} from "../../common/navPath/NavPath";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {setCreatedNewMonster} from "../../features/monster/monsterSlice";
 
+import withErrorAndLoadingHandling from "../HOC/withError/withErrorAndLoadingHandling";
+
 
 const MonsterClassContainer = () => {
 
-    const { data, refetch } = useGetAllMonsterClassQuery();
+    const { data, refetch, isLoading } = useGetAllMonsterClassQuery();
 
     const createdNewMonster = useAppSelector(state => state.monsterClass.createdNewMonsterClass)
     const dispatch = useAppDispatch()
@@ -21,10 +23,7 @@ const MonsterClassContainer = () => {
 
     },[createdNewMonster])
 
-    if (!data) {
-        return <span>error</span>
-    }
-    return <MonsterCardContainer monsterList={data} linkTo={NavPath.MONSTERS_BY_CLASS}/>
+    return withErrorAndLoadingHandling(MonsterCardContainer)({data : data, isLoading : isLoading,  linkTo : NavPath.MONSTERS_BY_CLASS})
 };
 
 
