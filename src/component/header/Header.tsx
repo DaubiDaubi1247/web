@@ -15,7 +15,7 @@ const Header = () => {
                     />
                 </NavLink>
                 <NavLink to={NavPath.CREATE_MONSTER_CLASS}>
-                    Создать класс
+                    Работа с классами
                 </NavLink>
             </nav>
         </header>

@@ -25,10 +25,17 @@ export const witcherApi = createApi({
         getMonsterInfoById: builder.query<MonsterInfoById, Number>({
             query: (monsterId) => MONSTER_URL + `/${monsterId}`,
         }),
+
+        deleteMonsterClass: builder.mutation<boolean, Number>({
+            query: (monsterClassId) => ({
+                url: MONSTER_CLASS_URL + `/${monsterClassId}`,
+                method: "DELETE"
+            }),
+        }),
     }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const { useUploadMonsterClassMutation, useGetAllMonsterClassQuery, useGetAllMonsterByClassQuery
-, useGetMonsterInfoByIdQuery} = witcherApi
+, useGetMonsterInfoByIdQuery, useDeleteMonsterClassMutation} = witcherApi

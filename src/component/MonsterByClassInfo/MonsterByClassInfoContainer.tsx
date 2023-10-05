@@ -12,7 +12,7 @@ const MonsterByClassInfoContainer = () => {
     const {data, isLoading} = useGetAllMonsterByClassQuery(Number(id));
 
     return withErrorAndLoadingHandling(MonsterCardContainer)({data : data, isLoading : isLoading,
-        linkTo: NavPath.MONSTERS_BY_CLASS + id + "/monsterId/"})
+            linkTo: NavPath.MONSTERS_BY_CLASS + id + "/monsterId/"})
 };
 
 export default MonsterByClassInfoContainer;
