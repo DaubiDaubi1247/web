@@ -16,6 +16,13 @@ export const witcherApi = createApi({
                 body : monsterClassInfo.monsterClassImg,
             }),
         }),
+        putMonsterClass: builder.mutation<void, InputsFields & {id : number}>({
+            query: (monsterClassInfo) => ({
+                url: MONSTER_CLASS_URL + `/${monsterClassInfo.id}?name=${monsterClassInfo.monsterClassName}`,
+                method: 'PUT',
+                body : monsterClassInfo.monsterClassImg,
+            }),
+        }),
         getAllMonsterClass: builder.query<MonsterArray, void>({
             query: () => ApiUrls.ALL_MONSTER_CLASS,
         }),
@@ -38,4 +45,4 @@ export const witcherApi = createApi({
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const { useUploadMonsterClassMutation, useGetAllMonsterClassQuery, useGetAllMonsterByClassQuery
-, useGetMonsterInfoByIdQuery, useDeleteMonsterClassMutation} = witcherApi
+, useGetMonsterInfoByIdQuery,usePutMonsterClassMutation, useDeleteMonsterClassMutation} = witcherApi

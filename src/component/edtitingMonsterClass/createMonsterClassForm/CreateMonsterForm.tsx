@@ -1,27 +1,28 @@
 import React from 'react';
 import {SubmitHandler, useForm} from "react-hook-form";
 import Form from "react-bootstrap/Form";
-import Button from 'react-bootstrap/Button';
+
 import {useUploadMonsterClassMutation} from "../../../services/witcher";
 import {useAppDispatch} from "../../../app/hooks";
 import {setCreatedNewMonster} from "../../../features/monster/monsterSlice";
+import StyledButton from "../../button/StyledButton";
 
-
-type InputsFields = {
+type FormFields = {
     monsterClassName: string,
     monsterClassImg: FileList,
 };
 
 const CreateMonsterForm = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<InputsFields>();
-    const [ trigger] = useUploadMonsterClassMutation()
+    const { register, handleSubmit, formState: { errors } } = useForm<FormFields>();
+
+    const [ triggerForUpload] = useUploadMonsterClassMutation()
 
     const dispatch = useAppDispatch();
-    const onSubmit: SubmitHandler<InputsFields> = async data => {
+    const onSubmit: SubmitHandler<FormFields> = async data => {
         const formData = new FormData();
         formData.append("classImg", data.monsterClassImg[0])
 
-        await trigger({monsterClassName : data.monsterClassName, monsterClassImg : formData})
+        await triggerForUpload({monsterClassName : data.monsterClassName, monsterClassImg : formData})
         dispatch(setCreatedNewMonster(true));
     }
 
@@ -52,10 +53,7 @@ const CreateMonsterForm = () => {
                         {...register("monsterClassImg")}
                     />
                 </Form.Group>
-                <Button
-                    className="bg-transparent hover:bg-white text-white-700 font-semibold hover:text-black py-2 px-4 border border-white-500 hover:border-transparent rounded" type="submit">
-                    Создать класс
-                </Button>
+                <StyledButton type={"submit"} text={"Создать класс"}/>
             </Form>
 
     );

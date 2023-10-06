@@ -9,7 +9,7 @@ interface MonsterCardContainerProps extends WithDataFromServer{
 
 const MonsterCardContainer :React.FC<MonsterCardContainerProps> = ({data, linkTo}) => {
 
-    const monsterCardList = (data as MonsterArray).map(monsterItem => <Link to={linkTo}>
+    const monsterCardList = (data as MonsterArray).map(monsterItem => <Link to={linkTo + monsterItem.id}>
         <MonsterCard monsterInfo={monsterItem}/> </Link>)
 
     return (
