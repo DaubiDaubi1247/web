@@ -13,7 +13,11 @@ type FormFields = {
 };
 
 const ModalForMPutClass = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormFields>();
+    const { 
+            register, 
+            handleSubmit, 
+            formState: { errors } 
+        } = useForm<FormFields>();
 
     const [ triggerForUpload] = usePutMonsterClassMutation();
     const idForUpdateClass = useAppSelector(state => state.monsterClass.idCurrentClass);
@@ -39,9 +43,9 @@ const ModalForMPutClass = () => {
                     className="rounded-md pl-1 text-black"
                     type="text"
                     placeholder="Введите имя класса"
-                    {...register("monsterClassName")}
+                    {...register("monsterClassName",{ required: true })}
                 />
-                {errors.monsterClassName && <span>This field is required</span>}
+                {errors.monsterClassName && <span className="text-white">This field is required</span>}
             </Form.Group>
 
             <Form.Group
@@ -52,10 +56,11 @@ const ModalForMPutClass = () => {
                 <Form.Control
                     as="input"
                     type="file"
-                    {...register("monsterClassImg")}
+                    {...register("monsterClassImg", { required: true })}
                 />
+                {errors.monsterClassImg && <span className="text-white">This field is required</span>}
             </Form.Group>
-            <StyledButton type={"submit"} text={"Обновить класс"}/>
+            <StyledButton type={"submit"}>Обновить класс</StyledButton>
         </Form>
 
     );

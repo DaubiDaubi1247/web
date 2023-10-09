@@ -1,10 +1,9 @@
 import React from 'react';
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>{
-    text : string,
 }
 
-const StyledButton : React.FC<ButtonProps> = ({type, text, onClick, className}) => {
+const StyledButton : React.FC<ButtonProps> = ({type, onClick, className, children}) => {
 
     return (
         <button
@@ -12,7 +11,7 @@ const StyledButton : React.FC<ButtonProps> = ({type, text, onClick, className}) 
             type={type}
             onClick={onClick}
         >
-            {text}
+            {children}
         </button>
     )
 };

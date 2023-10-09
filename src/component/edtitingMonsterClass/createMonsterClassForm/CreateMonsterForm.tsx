@@ -13,7 +13,11 @@ type FormFields = {
 };
 
 const CreateMonsterForm = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormFields>();
+    const { 
+            register, 
+            handleSubmit, 
+            formState: { errors } 
+        } = useForm<FormFields>();
 
     const [ triggerForUpload] = useUploadMonsterClassMutation()
 
@@ -53,7 +57,7 @@ const CreateMonsterForm = () => {
                         {...register("monsterClassImg")}
                     />
                 </Form.Group>
-                <StyledButton type={"submit"} text={"Создать класс"}/>
+                <StyledButton type={"submit"}>Создать класс</StyledButton>
             </Form>
 
     );

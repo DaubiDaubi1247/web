@@ -30,8 +30,8 @@ const MonsterCardWithDelete : React.FC<MonsterCardWitDeleteProps> = ({Card, idFo
         <div>
             {Card}
             <div className={"flex flex-col mr-2"}>
-                <StyledButton className={"mb-2"} type={"button"} text={"Удалить класс"} onClick={deleteClassHandler}/>
-                <StyledButton type={"button"} text={"Обновить класс"} onClick={updateClassHandler}/>
+                <StyledButton className={"mb-2"} type={"button"}  onClick={deleteClassHandler}>Удалить класс</StyledButton>
+                <StyledButton type={"button"}  onClick={updateClassHandler}>Обновить класс</StyledButton>
             </div>
         </div>
     )
