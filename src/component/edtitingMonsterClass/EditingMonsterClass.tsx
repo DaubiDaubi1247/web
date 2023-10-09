@@ -10,7 +10,8 @@ interface MonsterCardContainerProps extends WithDataFromServer{
 
 const EditingMonsterClass :React.FC<MonsterCardContainerProps> = ({data}) => {
 
-    const monsterCardList = (data as MonsterArray).map(monsterItem => <MonsterCardWithDelete Card={<MonsterCard monsterInfo={monsterItem}/>} idForDelete={monsterItem.id}/>)
+    const monsterCardList = (data as MonsterArray).map(monsterItem =>
+        <MonsterCardWithDelete Card={<MonsterCard monsterInfo={monsterItem}/>} idForDelete={monsterItem.id}/>)
 
     return (
         <div className="flex justify-center flex-wrap">
