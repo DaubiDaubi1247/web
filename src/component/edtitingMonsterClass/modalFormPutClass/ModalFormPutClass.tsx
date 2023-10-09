@@ -1,17 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 
-import FormForUploadClass from "../formForUpload/FormForUploadClass";
+import CommonFormForClass from '../commonFormForClass/CommonFormForClass';
+import { ClassFormProps } from '../commonFormForClass/formTypes';
 
-interface ModalFormProps {
+interface ModalFormProps extends ClassFormProps {
     modalIsOpen : boolean
+    closeModal : (value : boolean) => void
 }
 
-const ModalFormPutClass : React.FC<ModalFormProps> = ({modalIsOpen}) => {
+const ModalFormPutClass : React.FC<ModalFormProps> = ({modalIsOpen, onSubmit, submitButtonText, closeModal}) => {
+
+    const onEscDown = (e: KeyboardEvent | React.KeyboardEvent) => {
+        if (e.code === "Digit1") {
+          closeModal(false);
+        }
+      }
+
+    useEffect(() => {
+        document.addEventListener("keydown", onEscDown);
+
+        return () => document.removeEventListener("keydown", onEscDown);
+    }, [])
 
     return (
-        <Modal isOpen={modalIsOpen}>
-            <FormForUploadClass />
+        <Modal 
+            isOpen={modalIsOpen}
+            className={"m-auto text-center"}
+        >
+            <CommonFormForClass
+                submitButtonText={submitButtonText}
+                onSubmit={onSubmit}
+            />
         </Modal>
     )
 };

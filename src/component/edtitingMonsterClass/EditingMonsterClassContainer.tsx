@@ -1,17 +1,21 @@
-import React, {useEffect} from 'react';
-import CreateMonsterForm from "./createMonsterClassForm/CreateMonsterForm";
+import React, {useEffect, useState} from 'react';
 import {
-    useGetAllMonsterClassQuery,
+    useGetAllMonsterClassQuery, usePutMonsterClassMutation, useUploadMonsterClassMutation,
 } from "../../services/witcher";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {setCreatedNewMonster} from "../../features/monster/monsterSlice";
+import {setCreatedNewMonster, setUpdatedMonsterClass} from "../../features/monster/monsterSlice";
 import EditingMonsterClass from "./EditingMonsterClass";
 import withErrorAndLoadingHandling from "../HOC/withError/withErrorAndLoadingHandling";
 import ModalFormPutClass from "./modalFormPutClass/ModalFormPutClass";
+import CommonFormForClass from './commonFormForClass/CommonFormForClass';
+import { SubmitHandler } from 'react-hook-form';
+import { FormFieldsClass } from './commonFormForClass/formTypes';
 
 const EditingMonsterClassContainer :React.FC = () => {
 
-    const  modalIsVisible = useAppSelector(state => state.monsterClass.updatedMonsterClass);
+    // const  modalIsVisible = useAppSelector(state => state.monsterClass.updatedMonsterClass);
+
+    const [modalIsVisible, setModalIsVisible] = useState(false)
 
     const { data, refetch, isLoading } = useGetAllMonsterClassQuery();
 
@@ -26,14 +30,42 @@ const EditingMonsterClassContainer :React.FC = () => {
 
     },[createdNewMonster])
 
+    const [ triggerForUpload] = useUploadMonsterClassMutation()
+
+    const onSubmit: SubmitHandler<FormFieldsClass> = async data => {
+        const formData = new FormData();
+        formData.append("classImg", data.monsterClassImg[0])
+
+        await triggerForUpload({monsterClassName : data.monsterClassName, monsterClassImg : formData})
+        dispatch(setCreatedNewMonster(true));
+    }
+
+    const [ triggerForUpdate] = usePutMonsterClassMutation();
+    const idForUpdateClass = useAppSelector(state => state.monsterClass.idCurrentClass);
+
+    const onSubmitUpdate: SubmitHandler<FormFieldsClass> = async data => {
+        const formData = new FormData();
+        formData.append("classImg", data.monsterClassImg[0])
+
+        await triggerForUpdate({monsterClassName : data.monsterClassName, monsterClassImg : formData, id : Number(idForUpdateClass)})
+        setModalIsVisible(false);
+        dispatch(setCreatedNewMonster(true));
+    }
+
     return (
         <>
-            <CreateMonsterForm/>
-            {withErrorAndLoadingHandling(EditingMonsterClass)({data : data, isLoading : isLoading})}
+            <CommonFormForClass
+                submitButtonText="Создать класс"
+                onSubmit={onSubmit}
+            />
+            {withErrorAndLoadingHandling(EditingMonsterClass)({data : data, isLoading : isLoading, opeModal : setModalIsVisible})}
 
-            <div>
-                <ModalFormPutClass modalIsOpen={modalIsVisible}/>
-            </div>
+            <ModalFormPutClass 
+                modalIsOpen={modalIsVisible}
+                closeModal={setModalIsVisible}
+                onSubmit={onSubmitUpdate}
+                submitButtonText="Обновить класс"
+            />
         </>
     );
 }

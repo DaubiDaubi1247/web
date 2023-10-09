@@ -7,9 +7,10 @@ import StyledButton from "../../button/StyledButton";
 interface MonsterCardWitDeleteProps {
     Card :  ReactNode,
     idForDelete : number
+    opeModal : (value : boolean) => void
 }
 
-const MonsterCardWithDelete : React.FC<MonsterCardWitDeleteProps> = ({Card, idForDelete}) => {
+const MonsterCardWithDelete : React.FC<MonsterCardWitDeleteProps> = ({Card, idForDelete, opeModal}) => {
 
     const [trigger] = useDeleteMonsterClassMutation();
 
@@ -21,7 +22,8 @@ const MonsterCardWithDelete : React.FC<MonsterCardWitDeleteProps> = ({Card, idFo
     }
 
     const updateClassHandler = () => {
-        dispatch(setUpdatedMonsterClass(true));
+        debugger
+        opeModal(true)
         dispatch(setIdCurrentClass(idForDelete));
     }
 
