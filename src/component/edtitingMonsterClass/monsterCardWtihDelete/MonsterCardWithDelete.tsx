@@ -1,8 +1,8 @@
 import React, { ReactNode} from 'react';
 import {useDeleteMonsterClassMutation} from "../../../services/witcher";
 import {useAppDispatch} from "../../../app/hooks";
-import {setCreatedNewMonster, setIdCurrentClass, setUpdatedMonsterClass} from "../../../features/monster/monsterSlice";
-import StyledButton from "../../button/StyledButton";
+import {setCreatedNewMonster, setIdCurrentClass} from "../../../features/monster/monsterSlice";
+import StyledButton from "../../common/button/StyledButton";
 
 interface MonsterCardWitDeleteProps {
     Card :  ReactNode,

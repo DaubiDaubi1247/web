@@ -1,5 +1,5 @@
 import React, { ComponentType } from 'react';
-import Preloader from "../../preloader/Preloader";
+import Preloader from "../../common/preloader/Preloader";
 import {WithDataFromServer} from "../../../features/types/monsterTypes";
 
 interface WithErrorProps extends WithDataFromServer{

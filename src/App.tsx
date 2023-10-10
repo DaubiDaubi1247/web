@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './App.css';
-import Header from "./component/header/Header";
-import Footer from "./component/footer/Footer";
+import Header from "./component/common/header/Header";
+import Footer from "./component/common/footer/Footer";
 import {Route, Routes} from "react-router-dom";
 import {NavPath} from "./common/navPath/NavPath";
 import MonsterClassContainer from "./component/monsterClass/MonsterClassContainer";

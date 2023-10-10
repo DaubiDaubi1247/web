@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import { ClassFormProps, FormFieldsClass } from "./formTypes";
 import { Form } from "react-bootstrap";
-import StyledButton from "../../button/StyledButton";
+import StyledButton from "../button/StyledButton";
+import React from "react";
 
 const CommonFormForClass : React.FC<ClassFormProps> = ({onSubmit, submitButtonText}) => {
 

@@ -3,17 +3,15 @@ import {
     useGetAllMonsterClassQuery, usePutMonsterClassMutation, useUploadMonsterClassMutation,
 } from "../../services/witcher";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {setCreatedNewMonster, setUpdatedMonsterClass} from "../../features/monster/monsterSlice";
+import {setCreatedNewMonster} from "../../features/monster/monsterSlice";
 import EditingMonsterClass from "./EditingMonsterClass";
 import withErrorAndLoadingHandling from "../HOC/withError/withErrorAndLoadingHandling";
 import ModalFormPutClass from "./modalFormPutClass/ModalFormPutClass";
-import CommonFormForClass from './commonFormForClass/CommonFormForClass';
+import CommonFormForClass from '../common/commonFormForClass/CommonFormForClass';
 import { SubmitHandler } from 'react-hook-form';
-import { FormFieldsClass } from './commonFormForClass/formTypes';
+import { FormFieldsClass } from '../common/commonFormForClass/formTypes';
 
 const EditingMonsterClassContainer :React.FC = () => {
-
-    // const  modalIsVisible = useAppSelector(state => state.monsterClass.updatedMonsterClass);
 
     const [modalIsVisible, setModalIsVisible] = useState(false)
 

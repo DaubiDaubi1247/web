@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 
-import CommonFormForClass from '../commonFormForClass/CommonFormForClass';
-import { ClassFormProps } from '../commonFormForClass/formTypes';
+import CommonFormForClass from '../../common/commonFormForClass/CommonFormForClass';
+import { ClassFormProps } from '../../common/commonFormForClass/formTypes';
 
 interface ModalFormProps extends ClassFormProps {
     modalIsOpen : boolean
