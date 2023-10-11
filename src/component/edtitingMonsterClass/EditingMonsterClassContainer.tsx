@@ -55,6 +55,7 @@ const EditingMonsterClassContainer :React.FC = () => {
             <CommonFormForClass
                 submitButtonText="Создать класс"
                 onSubmit={onSubmit}
+                requiredClassName={false}
             />
             {withErrorAndLoadingHandling(EditingMonsterClass)({data : data, isLoading : isLoading, opeModal : setModalIsVisible})}
 
@@ -63,6 +64,7 @@ const EditingMonsterClassContainer :React.FC = () => {
                 closeModal={setModalIsVisible}
                 onSubmit={onSubmitUpdate}
                 submitButtonText="Обновить класс"
+                requiredClassName={false}
             />
         </>
     );

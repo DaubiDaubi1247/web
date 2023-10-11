@@ -9,7 +9,8 @@ interface ModalFormProps extends ClassFormProps {
     closeModal : (value : boolean) => void
 }
 
-const ModalFormPutClass : React.FC<ModalFormProps> = ({modalIsOpen, onSubmit, submitButtonText, closeModal}) => {
+const ModalFormPutClass : React.FC<ModalFormProps> = ({modalIsOpen, onSubmit, submitButtonText
+                                                          , closeModal, requiredClassName}) => {
 
     const onEscDown = (e: KeyboardEvent | React.KeyboardEvent) => {
         if (e.code === "Digit1") {
@@ -31,6 +32,7 @@ const ModalFormPutClass : React.FC<ModalFormProps> = ({modalIsOpen, onSubmit, su
             <CommonFormForClass
                 submitButtonText={submitButtonText}
                 onSubmit={onSubmit}
+                requiredClassName
             />
         </Modal>
     )

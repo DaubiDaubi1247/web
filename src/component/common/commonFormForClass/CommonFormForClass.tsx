@@ -4,7 +4,8 @@ import { Form } from "react-bootstrap";
 import StyledButton from "../button/StyledButton";
 import React from "react";
 
-const CommonFormForClass : React.FC<ClassFormProps> = ({onSubmit, submitButtonText}) => {
+const CommonFormForClass : React.FC<ClassFormProps> = ({onSubmit, submitButtonText,
+                                                       requiredClassName}) => {
 
     const { 
         register, 
@@ -23,7 +24,7 @@ const CommonFormForClass : React.FC<ClassFormProps> = ({onSubmit, submitButtonTe
                     className="rounded-md pl-1 text-black"
                     type="text"
                     placeholder="Введите имя класса"
-                    {...register("monsterClassName",{ required: true })}
+                    {...register("monsterClassName",{ required: requiredClassName })}
                 />
                 {errors.monsterClassName && <span className="text-white">This field is required</span>}
             </Form.Group>
