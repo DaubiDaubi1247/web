@@ -3,7 +3,7 @@ import {
     useGetAllMonsterClassQuery, usePutMonsterClassMutation, useUploadMonsterClassMutation,
 } from "../../services/witcher";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {setCreatedNewMonster} from "../../features/monster/monsterSlice";
+import {setCreatedNewMonsterClass} from "../../features/monster/monsterSlice";
 import EditingMonsterClass from "./EditingMonsterClass";
 import withErrorAndLoadingHandling from "../HOC/withError/withErrorAndLoadingHandling";
 import ModalFormPutClass from "./modalFormPutClass/ModalFormPutClass";
@@ -23,7 +23,7 @@ const EditingMonsterClassContainer :React.FC = () => {
     useEffect(() => {
         if (createdNewMonster) {
             refetch();
-            dispatch(setCreatedNewMonster(false))
+            dispatch(setCreatedNewMonsterClass(false))
         }
 
     },[createdNewMonster])
@@ -34,8 +34,8 @@ const EditingMonsterClassContainer :React.FC = () => {
         const formData = new FormData();
         formData.append("classImg", data.monsterClassImg[0])
 
-        await triggerForUpload({monsterClassName : data.monsterClassName, monsterClassImg : formData})
-        dispatch(setCreatedNewMonster(true));
+        await triggerForUpload({monsterClassName : data.monsterClassName, monsterClassFormData : formData})
+        dispatch(setCreatedNewMonsterClass(true));
     }
 
     const [ triggerForUpdate] = usePutMonsterClassMutation();
@@ -45,9 +45,9 @@ const EditingMonsterClassContainer :React.FC = () => {
         const formData = new FormData();
         formData.append("classImg", data.monsterClassImg[0])
 
-        await triggerForUpdate({monsterClassName : data.monsterClassName, monsterClassImg : formData, id : Number(idForUpdateClass)})
+        await triggerForUpdate({monsterClassName : data.monsterClassName, monsterClassFormData : formData, id : Number(idForUpdateClass)})
         setModalIsVisible(false);
-        dispatch(setCreatedNewMonster(true));
+        dispatch(setCreatedNewMonsterClass(true));
     }
 
     return (

@@ -1,10 +1,8 @@
-
 import {useGetAllMonsterClassQuery} from "../../services/witcher";
 import MonsterCardContainer from "../monsterCard/MonsterCardContainer";
 import {NavPath} from "../../common/navPath/NavPath";
-
-
 import withErrorAndLoadingHandling from "../HOC/withError/withErrorAndLoadingHandling";
+
 
 
 const MonsterClassContainer = () => {

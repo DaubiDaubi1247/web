@@ -14,9 +14,14 @@ const Header = () => {
                         alt="withcer_logo"
                     />
                 </NavLink>
-                <NavLink to={NavPath.CREATE_MONSTER_CLASS}>
-                    Работа с классами
-                </NavLink>
+                <div>
+                    <NavLink className={"mr-2"} to={NavPath.CREATE_MONSTER_CLASS}>
+                        Работа с классами
+                    </NavLink>
+                    <NavLink to={NavPath.CREATE_MONSTER}>
+                        Работа с монстрами
+                    </NavLink>
+                </div>
             </nav>
         </header>
     );

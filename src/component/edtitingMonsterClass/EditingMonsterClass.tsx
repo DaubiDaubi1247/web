@@ -3,8 +3,6 @@ import MonsterCard from "../monsterCard/MonsterCard";
 import {MonsterArray, WithDataFromServer} from "../../features/types/monsterTypes";
 import MonsterCardWithDelete from "./monsterCardWtihDelete/MonsterCardWithDelete";
 
-
-
 interface MonsterCardContainerProps extends WithDataFromServer{
     opeModal : (value : boolean) => void
 }

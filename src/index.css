@@ -21,7 +21,6 @@ code {
 
 body {
   min-height:100vh;
-
 }
 
 #root {
@@ -44,4 +43,9 @@ header,footer{
   text-align:center;
   line-height:50px;
 
+}
+
+textarea {
+  color: black;
+  display: block;
 }

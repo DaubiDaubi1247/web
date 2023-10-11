@@ -1,7 +1,7 @@
 import React, { ReactNode} from 'react';
 import {useDeleteMonsterClassMutation} from "../../../services/witcher";
 import {useAppDispatch} from "../../../app/hooks";
-import {setCreatedNewMonster, setIdCurrentClass} from "../../../features/monster/monsterSlice";
+import {setCreatedNewMonsterClass, setIdCurrentClass} from "../../../features/monster/monsterSlice";
 import StyledButton from "../../common/button/StyledButton";
 
 interface MonsterCardWitDeleteProps {
@@ -18,7 +18,7 @@ const MonsterCardWithDelete : React.FC<MonsterCardWitDeleteProps> = ({Card, idFo
 
     const deleteClassHandler = async () => {
         await trigger(idForDelete);
-        dispatch(setCreatedNewMonster(true))
+        dispatch(setCreatedNewMonsterClass(true))
     }
 
     const updateClassHandler = () => {

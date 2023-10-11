@@ -10,6 +10,7 @@ import MonsterByClassInfoContainer from "./component/MonsterByClassInfo/MonsterB
 import MonsterInfoContainer from "./component/monsterInfo/MonsterInfoContainer";
 
 import EditingMonsterClassContainer from "./component/edtitingMonsterClass/EditingMonsterClassContainer";
+import EditingMonsterContainer from './component/editingMonster/EditingMonsterContainer';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
                 <Route path={NavPath.MONSTERS_BY_CLASS + ":id"} element={<MonsterByClassInfoContainer/>}/>
                 <Route path={NavPath.MONSTERS_BY_CLASS + ":id/monsterId/:id"} element={<MonsterInfoContainer/>}/>
                 <Route path={NavPath.CREATE_MONSTER_CLASS} element={<EditingMonsterClassContainer/>}/>
+                <Route path={NavPath.CREATE_MONSTER} element={<EditingMonsterContainer/>}/>
             </Routes>
         </div>
         <Footer/>

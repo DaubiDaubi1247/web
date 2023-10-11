@@ -1,8 +1,8 @@
 // Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import {InputsFields} from "../features/types/authTypes";
 import {ApiUrls, BASE_URL, MONSTER_CLASS_URL, MONSTER_URL} from "../api/apiConfig";
 import {MonsterArray, MonsterInfoById} from "../features/types/monsterTypes";
+import {InputsFields} from "./types";
 
 // Define a service using a base URL and expected endpoints
 export const witcherApi = createApi({
@@ -13,14 +13,14 @@ export const witcherApi = createApi({
             query: (monsterClassInfo) => ({
                 url: MONSTER_CLASS_URL + `?name=${monsterClassInfo.monsterClassName}`,
                 method: 'POST',
-                body : monsterClassInfo.monsterClassImg,
+                body : monsterClassInfo.monsterClassFormData,
             }),
         }),
         putMonsterClass: builder.mutation<void, InputsFields & {id : number}>({
             query: (monsterClassInfo) => ({
                 url: MONSTER_CLASS_URL + `/${monsterClassInfo.id}?name=${monsterClassInfo.monsterClassName}`,
                 method: 'PUT',
-                body : monsterClassInfo.monsterClassImg,
+                body : monsterClassInfo.monsterClassFormData,
             }),
         }),
         getAllMonsterClass: builder.query<MonsterArray, void>({
@@ -39,10 +39,18 @@ export const witcherApi = createApi({
                 method: "DELETE"
             }),
         }),
+
+        createMonsterByClass: builder.mutation<void, InputsFields & {id : number}>({
+            query: (monsterClassInfo) => ({
+                url: MONSTER_URL + `/${monsterClassInfo.id}`,
+                method: 'POST',
+                body : monsterClassInfo.monsterClassFormData,
+            }),
+        }),
     }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const { useUploadMonsterClassMutation, useGetAllMonsterClassQuery, useGetAllMonsterByClassQuery
-, useGetMonsterInfoByIdQuery,usePutMonsterClassMutation, useDeleteMonsterClassMutation} = witcherApi
+, useGetMonsterInfoByIdQuery,usePutMonsterClassMutation, useDeleteMonsterClassMutation, useCreateMonsterByClassMutation} = witcherApi
