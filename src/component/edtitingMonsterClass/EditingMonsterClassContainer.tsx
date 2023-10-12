@@ -10,6 +10,8 @@ import ModalFormPutClass from "./modalFormPutClass/ModalFormPutClass";
 import CommonFormForClass from '../common/commonFormForClass/CommonFormForClass';
 import { SubmitHandler } from 'react-hook-form';
 import { FormFieldsClass } from '../common/commonFormForClass/formTypes';
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditingMonsterClassContainer :React.FC = () => {
 
@@ -34,9 +36,20 @@ const EditingMonsterClassContainer :React.FC = () => {
         const formData = new FormData();
         formData.append("classImg", data.monsterClassImg[0])
 
-        await triggerForUpload({monsterClassName : data.monsterClassName, monsterClassFormData : formData})
-        dispatch(setCreatedNewMonsterClass(true));
-    }
+        try {
+            await triggerForUpload({monsterClassName : data.monsterClassName, monsterClassFormData : formData}).unwrap()
+            toast.success('Класс успешно создан', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+            dispatch(setCreatedNewMonsterClass(true));
+        } catch (error) {
+            //@ts-ignore
+            toast.error(error.data.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+            }
+        }
+
 
     const [ triggerForUpdate] = usePutMonsterClassMutation();
     const idForUpdateClass = useAppSelector(state => state.monsterClass.idCurrentClass);
@@ -45,9 +58,19 @@ const EditingMonsterClassContainer :React.FC = () => {
         const formData = new FormData();
         formData.append("classImg", data.monsterClassImg[0])
 
-        await triggerForUpdate({monsterClassName : data.monsterClassName, monsterClassFormData : formData, id : Number(idForUpdateClass)})
-        setModalIsVisible(false);
-        dispatch(setCreatedNewMonsterClass(true));
+        try {
+            await triggerForUpdate({monsterClassName : data.monsterClassName, monsterClassFormData : formData, id : Number(idForUpdateClass)}).unwrap()
+            toast.success('Класс успешно обновлен', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+            setModalIsVisible(false);
+            dispatch(setCreatedNewMonsterClass(true));
+        } catch (error) {
+            //@ts-ignore
+            toast.error(error.data.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
     }
 
     return (
@@ -66,6 +89,8 @@ const EditingMonsterClassContainer :React.FC = () => {
                 submitButtonText="Обновить класс"
                 requiredClassName={false}
             />
+
+            <ToastContainer/>
         </>
     );
 }

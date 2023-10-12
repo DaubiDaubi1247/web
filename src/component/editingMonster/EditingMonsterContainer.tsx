@@ -9,6 +9,9 @@ import CommonFormForMonster from '../common/commonFormForMonster/CommonFormForMo
 import { MonsterInfo } from '../common/commonFormForMonster/formTypes';
 import {useAppDispatch} from "../../app/hooks";
 import {setCreatedNewMonster} from "../../features/monster/monsterSlice";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const EditingMonsterContainer : React.FC = () => {
 
@@ -26,8 +29,18 @@ const EditingMonsterContainer : React.FC = () => {
         formData.append("description", data.description)
 
 
-        await triggerForCreate({monsterClassName : data.monsterClassName, monsterClassFormData : formData, id : data.classId})
-        dispatch(setCreatedNewMonster(true))
+        try {
+            await triggerForCreate({monsterClassName : data.monsterClassName, monsterClassFormData : formData, id : data.classId}).unwrap()
+            toast.success('Монстр успешно создан', {
+                position: toast.POSITION.TOP_RIGHT
+            });
+            dispatch(setCreatedNewMonster(true))
+        } catch (error) {
+            //@ts-ignore
+            toast.error(error.data.message, {
+                position: toast.POSITION.TOP_RIGHT
+            });
+        }
     }
 
     return (
@@ -46,6 +59,8 @@ const EditingMonsterContainer : React.FC = () => {
                 submitButtonText="Обновить класс"
                 requiredClassName={false}
             /> */}
+
+            <ToastContainer/>
         </>
     );
 }

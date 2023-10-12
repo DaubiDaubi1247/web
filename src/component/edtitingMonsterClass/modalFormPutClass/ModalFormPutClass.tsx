@@ -32,7 +32,7 @@ const ModalFormPutClass : React.FC<ModalFormProps> = ({modalIsOpen, onSubmit, su
             <CommonFormForClass
                 submitButtonText={submitButtonText}
                 onSubmit={onSubmit}
-                requiredClassName
+                requiredClassName={requiredClassName}
             />
         </Modal>
     )
